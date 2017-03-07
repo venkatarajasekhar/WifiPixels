@@ -1,21 +1,44 @@
 #include <NeoPixelBus.h>
+#include <iostream>
 #include "pixel_helper.h"
 #include "BlendRGB.h"
 #include "CustomPattern.h"
 
-PIXEL_HELPER_CLASS * pixel_helper;
+using namespace std;
+
+PIXEL_HELPER_CLASS* pixel_helper;
+
+void PIXEL_HELPER_CLASS::ExceptionHandler(void){
+	throw new string "String Exceptions";	
+return;
+}
+
 
 RgbColor PIXEL_HELPER_CLASS::RGBStringToRGB(String input) {
   int index = 0;
+	try{
   int R = input.substring(0, input.indexOf('.')).toInt();
+	pixel_helper->ExceptionHandler();
+	}catch(const char* msg){
+        cout << "We caught a message: " << msg << endl;
+    }
 
   index = input.indexOf('.');
+	try{
   int G = input.substring(index + 1, input.indexOf('.', index + 1)).toInt();
-
+  pixel_helper->ExceptionHandler();
+	}catch(const char* msg){
+        cout << "We caught a message: " << msg << endl;
+    }
+	
   index = input.indexOf('.', index + 1);
+	try{
   int B = input.substring(index + 1).toInt();
-
-  return RgbColor( R , G , B );
+  pixel_helper->ExceptionHandler();
+	}catch(const char* msg){
+        cout << "We caught a message: " << msg << endl;
+    }
+  return RgbColor( R,G,B);
 }
 
 void PIXEL_HELPER_CLASS::SetAll(RgbColor colour) {
