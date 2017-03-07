@@ -14,6 +14,8 @@ CUSTOMPATTERN cp;
 */
 
 void ParseCustomPattern(String input, PIXEL_HELPER_CLASS* p_helper) {
+	if(!p_helper)
+		return;
 	p_helper->LEDMode = CustomPattern_Mode;
 	/*
 	// Set Patterns
@@ -31,10 +33,14 @@ void ParseCustomPattern(String input, PIXEL_HELPER_CLASS* p_helper) {
 	cp.NumberOfPattern = 4;
 	cp.Index = 0;
 	*/
+	return;
 }
 
 void DoCustomPatternMode(PIXEL_HELPER_CLASS* p_helper) {
+	if(!p_helper)
+		return;
     p_helper->SetAll({0,0,0});
-    p_helper->strip.Show();	
+    p_helper->strip.Show();
+	return;
 }
 
